@@ -46,28 +46,30 @@ The result of this pipeline gives a good recognition of the two given videos. Ho
 
 
 ### Reflection of my Second Pipeline, using draw_linesOpt2()
-Here almost the same pipeline as the previous one is used, also the short comming and suggestion are still valid.
+Here, almost the same pipeline as previous one is used, also the short comming and suggestion are still valid.
 
 The goal of my second Pipeline was to reduce the oscillation of the lines, by using the information the old frames. Because of that, the function draw_linesOpt() is replaced by draw_linesOpt2():
 5.1 I defined 6 global variables: the slope, start point and end point of right and left line. This value represent the average of the 7 last frames lines.
 5.2 Using the same method as the previous pipeline, the expected two lines for certain frame are computed
 5.3 Now, an average of this two lines with the information of the last 7 frames lines are calculated. 
 *Short coming: Initial value for global variables only came from first frame.*
-*Suggestion: First frames should be used not to draw lines, but to define **aceptable** values, also detecting and ignoring misleading information. 
+*Suggestion: First frames should be used not to draw lines, but to define **acceptable** values, also detecting and ignoring misleading information. 
 *Short coming: It would slow also needed changes. If a wrong line is identify, it would remains on the average*
 *Suggestion: Mean should be used, not average*
 
+The result of this pipeline gives a good recognition of the two given videos, with less oscilation.
+
+### Reflection of my Third Pipeline, using a modified draw_linesOpt2() for test_videos_output/challenge.mp4
+Here almost the same pipeline as previous one is used, also the short comming and suggestion are still valid.
+
+"challenge.mp4" video has other enviroment conditions as the previous one (ilumination, region of interest --> it is a curve). The goal of my second Pipeline was to draw the lanelines, doing only few changes on "Second Pipeline". 
+Problem of "Second Pipeline": There were many frames, where my function doesn't find a right line. Which is why, it was using only the information of old frames. However, there were also frames were wrong lines were found. This wrong line affect the average value and remains there.
+
+Solution: 
+1. I adapted the region of interest to this video. 
+*Short commit: I should have also adapted the condition on draw_linesOpt2(), which decide which Lines, given from Hough function, are acceptable.
+3. If the new detected lines changed two much (detected line were too much noise affected), it was ignore. It is done by using a condition of maximum acceptable variation of the slope of 15% and maximum variation of the start   
 
 
+My average function was introducing noise in the new fol
 
-
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
-
-
-### 3. Suggest possible improvements to your pipeline
-
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
