@@ -84,3 +84,5 @@ The result of this pipeline is not good, but it is much better as before. Two li
 
 ### Final Suggestion
 The first frame should be used to compute the region of interest and the acceptable check conditions. However, it should also be able to identify if while driving, the region of interest should be computed again.
+
+Speed of computing should also considered on real driving.
